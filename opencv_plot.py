@@ -11,11 +11,11 @@ import numpy as np
 # Plot values in opencv program
 class Plotter:
 	def __init__(self, plot_width, plot_height):
-	    self.width = plot_width
-	    self.height = plot_height
-	    self.color = (255, 0 ,0)
-	    self.val = []
-	    self.plot_canvas = np.ones((self.height, self.width, 3))*255
+		self.width = plot_width
+		self.height = plot_height
+		self.color = (255, 0 ,0)
+		self.val = []
+		self.plot_canvas = np.ones((self.height, self.width, 3))*255
 
 	# Update new values in plot
 	def plot(self, val, label = "plot"):
@@ -25,7 +25,7 @@ class Plotter:
 
 		self.show_plot(label)
 
-    # Show plot using opencv imshow
+	# Show plot using opencv imshow
 	def show_plot(self, label):
 		self.plot_canvas = np.ones((self.height, self.width, 3))*255
 		cv2.line(self.plot_canvas, (0, int(self.height/2) ), (self.width, int(self.height/2)), (0,255,0), 1)
