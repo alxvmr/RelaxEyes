@@ -7,6 +7,7 @@ import numpy as np
 from opencv_plot import Plotter
 from scipy.spatial import distance as dist
 import keyboard
+import matplotlib.pyplot as plt
 
 '''
 Настройка моделей
@@ -68,7 +69,8 @@ def get_list_from_file(file):
     el = []
     with open(file) as f:
         for line in f:
-            el.append(float(line))
+            if line != "None\n":
+                el.append(float(line))
     f.close()
     return el
 
@@ -428,8 +430,20 @@ def option_func(scrn_prxmt_trckng=False,
 
 # Тестовый запуск
 if __name__ == '__main__':
-    # option_func(scrn_prxmt_trckng=True, trckng_blnk_sqnt=True,
-    #             # rtgr_scrn_prxmt_trckng=True, video_scrn_prxmt_trckng=True,
-    #             rtgr_scrn_prxmt_trckng=True, video_trckng_blnk_sqnt=True)
+    #Если вывзвать одну функцию (расстояние между глазами) + реал тайм график + видео
+    #option_func(scrn_prxmt_trckng=True, rtgr_scrn_prxmt_trckng=True, video_scrn_prxmt_trckng=True)
+
+    #запуск двух функций + их реал тайм графики + их видео
+    #option_func(scrn_prxmt_trckng=True, rtgr_scrn_prxmt_trckng=True, video_scrn_prxmt_trckng=True
+    #            ,trckng_eye_shldrs=True, rtgr_trckng_eye_shldrs=True, video_trckng_eye_shldrs=True)
 
     option_func(scrn_prxmt_trckng=True, trckng_eye_shldrs=True, trckng_blnk_sqnt=True)
+
+    #считывание из файла и построение графика по данным файла
+    # eye_distance = get_list_from_file('distance_between_eye_points.txt')
+    # print(eye_distance)
+    # plt.plot(eye_distance)
+    # plt.title('График изменения расстояния между глазами')
+    # plt.xlabel('Время')
+    # plt.ylabel('Значение расстояния')
+    # plt.show()
